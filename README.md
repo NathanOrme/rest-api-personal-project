@@ -42,8 +42,6 @@ raise individual PRs if any dependencies are out of date.
 
 This ensures dependencies are secure and up to date without the manual exercise of investigating.
 
-An example PR can be found [here](https://github.com/NathanOrme/personal-details-app/pull/20)
-
 ## Things to note
 
 - Both solutions are Spring Boot Applications
