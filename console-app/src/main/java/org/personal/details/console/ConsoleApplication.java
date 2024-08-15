@@ -8,10 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 @SpringBootApplication
 @RequiredArgsConstructor
-public class MainApplication {
+public class ConsoleApplication {
 
     public static void main(final String[] args) {
-        SpringApplication.run(MainApplication.class, args).close();
+        SpringApplication.run(ConsoleApplication.class, args).close();
 
     }
 

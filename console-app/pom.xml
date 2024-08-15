@@ -95,7 +95,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <mainClass>org.personal.details.console.MainApplication</mainClass>
+                    <mainClass>org.personal.details.console.ConsoleApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
