@@ -33,6 +33,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Set Version With Maven
+        run: mvn versions:set -DnewVersion=${{ steps.get-next-version.outputs.next-version }}
+
       - name: Build with Maven
         run: mvn clean install
 
