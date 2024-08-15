@@ -1,4 +1,4 @@
-package org.personal.details.bdd.save;
+package org.personal.details.karate.save;
 
 import com.intuit.karate.junit5.Karate;
 import org.springframework.beans.factory.annotation.Value;

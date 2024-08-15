@@ -1,4 +1,4 @@
-package org.personal.details.bdd.get;
+package org.personal.details.karate.get;
 
 import com.intuit.karate.junit5.Karate;
 import org.springframework.beans.factory.annotation.Value;
