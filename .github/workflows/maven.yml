@@ -21,17 +21,20 @@ jobs:
           fetch-depth: 0
 
       - name: Get next version
-        uses: MiguelRipoll23/get-next-version@v3.0.0
-        id: get-next-version
+
+        uses: rickstaa/action-get-semver@v1
+        id: get_semver
+        with:
+          bump_level: "minor"
 
       - name: Show the next version
         run: |
-          echo ${{ steps.get-next-version.outputs.next-version }}
+          echo ${{ steps.get_semver.outputs.next_version }}
 
 
       - name: Remove v prefix
         id: removev
-        run: echo "::set-output name=ref_name::$(echo ${{ steps.get-next-version.outputs.next-version }} | perl -0777 -pe 's/^v//')"
+        run: echo "::set-output name=ref_name::$(echo ${{ steps.get_semver.outputs.next_version }} | perl -0777 -pe 's/^v//')"
       - name: Use result
         run: echo "${{ steps.removev.outputs.ref_name }}"
 
@@ -52,8 +55,8 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
-          name: Release ${{ steps.get-next-version.outputs.next-version }}
-          tag_name: ${{ steps.get-next-version.outputs.next-version }}
+          name: Release ${{ steps.get_semver.outputs.next_version }}
+          tag_name: ${{ steps.get_semver.outputs.next_version }}
           token: ${{secrets.GITHUB_TOKEN}}
           generate_release_notes: true
       
