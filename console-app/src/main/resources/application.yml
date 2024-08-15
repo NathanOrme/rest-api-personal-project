@@ -1,4 +1,15 @@
+spring:
+  ssl:
+    bundle:
+      jks:
+        springboot:
+          truststore:
+            location: "classpath:springboot.p12"
+            password: "password"
+            type: "PKCS12"
+
 personal:
   details:
+    baseUrl: https://localhost:8443
     username: "username"
     password: "password"

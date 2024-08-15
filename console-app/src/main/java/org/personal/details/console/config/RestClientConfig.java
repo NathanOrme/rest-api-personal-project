@@ -1,13 +1,18 @@
 package org.personal.details.console.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.web.client.RestClientSsl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
+
 @Component
 @SuppressWarnings("unused")
 public class RestClientConfig {
+
+    @Value("${personal.details.baseUrl}")
+    private String baseUrl;
 
     @Value("${personal.details.username}")
     String username;
@@ -15,13 +20,14 @@ public class RestClientConfig {
     @Value("${personal.details.password}")
     String password;
 
-    private static final String BASE_URI = "http://localhost:8019";
-
     @Bean
-    private RestClient restClient() {
-        return RestClient.builder()
+    private RestClient restClient(final RestClientSsl ssl) {
+
+        return RestClient
+                .builder()
                 .defaultHeaders(httpHeaders -> httpHeaders.setBasicAuth(username, password))
-                .baseUrl(BASE_URI)
+                .apply(ssl.fromBundle("springboot"))
+                .baseUrl(baseUrl)
                 .build();
     }
 }

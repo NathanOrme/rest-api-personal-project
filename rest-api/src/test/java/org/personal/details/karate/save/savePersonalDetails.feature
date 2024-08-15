@@ -1,7 +1,7 @@
 Feature: Saving Personal Details
 
   Background:
-    * url 'http://localhost:' + karate.properties['karate.server.port']
+    * url 'https://localhost:' + karate.properties['karate.server.port']
     * configure headers = { Authorization: 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }
 
   Scenario: Testing Save

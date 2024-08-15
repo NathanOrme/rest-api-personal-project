@@ -121,6 +121,7 @@ class PersonalDetailsApplicationIT {
         String url = "/personal-details/get/%s".formatted(customerRef);
         return mockMvc.perform(get(url)
                 .contentType(MediaType.APPLICATION_JSON)
+                .secure(true)
                 .with(user("admin").password("password"))
         );
     }
@@ -131,6 +132,7 @@ class PersonalDetailsApplicationIT {
         return mockMvc.perform(post(url)
                         .content(objectWriter.writeValueAsString(personalDetailsDTO))
                         .contentType(MediaType.APPLICATION_JSON)
+                        .secure(true)
                         .with(user("admin").password("password"))
                 )
                 .andExpect(status().isCreated())
