@@ -28,6 +28,7 @@ jobs:
         run: |
           echo ${{ steps.get_next_version.outputs.version }}
 
+
       - name: Remove v prefix
         id: removev
         run: echo "::set-output name=ref_name::$(echo ${{ steps.get_next_version.outputs.version }} | perl -0777 -pe 's/^v//')"
