@@ -1,8 +1,8 @@
-# Personal Details App Projects
+# REST API Personal project
 
 <!-- TOC -->
 
-* [Personal Details App Projects](#personal-details-app-projects)
+* [REST API Personal project](#rest-api-personal-project)
     * [Introduction](#introduction)
         * [Basis of project](#basis-of-project)
     * [Technologies Used](#technologies-used)
