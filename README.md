@@ -25,7 +25,7 @@ This private project consists of the following project(s):
 ### Basis of project
 
 This project came from the following request:
-[Rest Project Task](src/main/resources/Mini%20REST%20Project.docx)
+[Rest Project Task](src/main/resources/Mini%20REST%20Project.pdf)
 
 ## Technologies Used
 
@@ -46,7 +46,7 @@ This ensures dependencies are secure and up to date without the manual exercise 
 
 - Both solutions are Spring Boot Applications
     - Ideally these should either be part of the same solution, OR be packaged separately to each other
-    - They are packaged together for the convenience of a github repository
+    - They are packaged together for the convenience of a Github repository
 
 ## Considerations for the future
 
