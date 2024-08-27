@@ -5,7 +5,8 @@ import org.personal.details.common.model.PersonalDetailsDTO;
 import java.util.List;
 
 /**
- * Interface for reading the contents of a CSV file and converting them into a list of {@link PersonalDetailsDTO} objects.
+ * Interface for reading the contents of a CSV file and
+ * converting them into a list of {@link PersonalDetailsDTO} objects.
  */
 public interface CsvReaderService {
 
