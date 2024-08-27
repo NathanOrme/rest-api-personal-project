@@ -20,9 +20,9 @@ public class PersonalDetailsService {
     private final PersonalDetailsRepository personalDetailsRepository;
 
     public void saveDetails(final PersonalDetailsDTO personalDetailsDTO) {
-        boolean isCustomerRefPresent = isCustomerRefPresent(personalDetailsDTO.getCustomerRef());
+        boolean isCustomerRefPresent = isCustomerRefPresent(personalDetailsDTO.customerRef());
         if (isCustomerRefPresent) {
-            throw new CustomerRefExistsException("The record for customer ref %s could not be processed".formatted(personalDetailsDTO.getCustomerRef()));
+            throw new CustomerRefExistsException("The record for customer ref %s could not be processed".formatted(personalDetailsDTO.customerRef()));
         }
         PersonalDetails personalDetails = personalDetailsMapper.convertDTOToEntity(personalDetailsDTO);
         personalDetailsRepository.save(personalDetails);

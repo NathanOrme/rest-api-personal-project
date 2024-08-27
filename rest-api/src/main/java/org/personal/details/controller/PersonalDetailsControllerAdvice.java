@@ -17,10 +17,7 @@ public class PersonalDetailsControllerAdvice {
 
     private static ResponseEntity<ErrorMessageDTO> generateErrorMessage(final HttpStatus httpStatus, final String errorMessage) {
         log.error(errorMessage);
-        ErrorMessageDTO errorMessageDTO = ErrorMessageDTO.builder()
-                .errorMessage(errorMessage)
-                .build();
-
+        ErrorMessageDTO errorMessageDTO = new ErrorMessageDTO(errorMessage);
         return ResponseEntity.status(httpStatus).body(errorMessageDTO);
     }
 

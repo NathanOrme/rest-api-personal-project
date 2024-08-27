@@ -37,17 +37,17 @@ class PersonalDetailsServiceTest {
     void saveDetails_WithExistingCustomerRef_ThrowsException() {
         PersonalDetailsDTO personalDetailsDTO = TestUtils.generatePersonDetailsDTO();
         PersonalDetails personalDetails = TestUtils.generatePersonDetails();
-        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.getCustomerRef())).thenReturn(Optional.ofNullable(personalDetails));
+        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.customerRef())).thenReturn(Optional.ofNullable(personalDetails));
 
         CustomerRefExistsException exception = assertThrows(CustomerRefExistsException.class, () -> personalDetailsService.saveDetails(personalDetailsDTO));
-        assertEquals("The record for customer ref %s could not be processed".formatted(personalDetailsDTO.getCustomerRef()), exception.getMessage());
+        assertEquals("The record for customer ref %s could not be processed".formatted(personalDetailsDTO.customerRef()), exception.getMessage());
     }
 
 
     @Test
     void saveDetails_WithNewCustomerRef_DoesNotThrowException() {
         PersonalDetailsDTO personalDetailsDTO = TestUtils.generatePersonDetailsDTO();
-        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.getCustomerRef())).thenReturn(Optional.empty());
+        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.customerRef())).thenReturn(Optional.empty());
 
         assertDoesNotThrow(() -> personalDetailsService.saveDetails(personalDetailsDTO));
     }
@@ -55,19 +55,19 @@ class PersonalDetailsServiceTest {
     @Test
     void getCustomerFromRef_WithNewCustomerRef_ThrowsException() {
         PersonalDetailsDTO personalDetailsDTO = TestUtils.generatePersonDetailsDTO();
-        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.getCustomerRef())).thenReturn(Optional.empty());
+        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.customerRef())).thenReturn(Optional.empty());
 
-        CustomerDoesNotExistException exception = assertThrows(CustomerDoesNotExistException.class, () -> personalDetailsService.getCustomerFromRef(personalDetailsDTO.getCustomerRef()));
-        assertEquals("There is no matching customer for reference %s".formatted(personalDetailsDTO.getCustomerRef()), exception.getMessage());
+        CustomerDoesNotExistException exception = assertThrows(CustomerDoesNotExistException.class, () -> personalDetailsService.getCustomerFromRef(personalDetailsDTO.customerRef()));
+        assertEquals("There is no matching customer for reference %s".formatted(personalDetailsDTO.customerRef()), exception.getMessage());
     }
 
     @Test
     void getCustomerFromRef_WithExistingCustomerRef_DoesNotThrowException() {
         PersonalDetailsDTO personalDetailsDTO = TestUtils.generatePersonDetailsDTO();
-        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.getCustomerRef()))
+        when(personalDetailsRepository.findOptionalPersonalDetailsByCustomerRef(personalDetailsDTO.customerRef()))
                 .thenReturn(Optional.of(TestUtils.generatePersonDetails()));
 
-        assertDoesNotThrow(() -> personalDetailsService.getCustomerFromRef(personalDetailsDTO.getCustomerRef()));
+        assertDoesNotThrow(() -> personalDetailsService.getCustomerFromRef(personalDetailsDTO.customerRef()));
     }
 
 }

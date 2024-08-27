@@ -16,14 +16,14 @@ class PersonalDetailsMapperTest {
         PersonalDetailsDTO personalDetailsDTO = TestUtils.generatePersonDetailsDTO();
         PersonalDetails personalDetails = mapper.convertDTOToEntity(personalDetailsDTO);
 
-        assertEquals(personalDetailsDTO.getCustomerRef(), personalDetails.getCustomerRef());
-        assertEquals(personalDetailsDTO.getCustomerName(), personalDetails.getCustomerName());
-        assertEquals(personalDetailsDTO.getAddressLine1(), personalDetails.getAddressLine1());
-        assertEquals(personalDetailsDTO.getAddressLine2(), personalDetails.getAddressLine2());
-        assertEquals(personalDetailsDTO.getTown(), personalDetails.getTown());
-        assertEquals(personalDetailsDTO.getCounty(), personalDetails.getCounty());
-        assertEquals(personalDetailsDTO.getCountry(), personalDetails.getCountry());
-        assertEquals(personalDetailsDTO.getPostcode(), personalDetails.getPostcode());
+        assertEquals(personalDetailsDTO.customerRef(), personalDetails.getCustomerRef());
+        assertEquals(personalDetailsDTO.customerName(), personalDetails.getCustomerName());
+        assertEquals(personalDetailsDTO.addressLine1(), personalDetails.getAddressLine1());
+        assertEquals(personalDetailsDTO.addressLine2(), personalDetails.getAddressLine2());
+        assertEquals(personalDetailsDTO.town(), personalDetails.getTown());
+        assertEquals(personalDetailsDTO.county(), personalDetails.getCounty());
+        assertEquals(personalDetailsDTO.country(), personalDetails.getCountry());
+        assertEquals(personalDetailsDTO.postcode(), personalDetails.getPostcode());
     }
 
     @Test
@@ -31,14 +31,14 @@ class PersonalDetailsMapperTest {
         PersonalDetails personalDetails = TestUtils.generatePersonDetails();
         PersonalDetailsDTO personalDetailsDTO = mapper.convertEntityToDTO(personalDetails);
 
-        assertEquals(personalDetails.getCustomerRef(), personalDetailsDTO.getCustomerRef());
-        assertEquals(personalDetails.getCustomerName(), personalDetailsDTO.getCustomerName());
-        assertEquals(personalDetails.getAddressLine1(), personalDetailsDTO.getAddressLine1());
-        assertEquals(personalDetails.getAddressLine2(), personalDetailsDTO.getAddressLine2());
-        assertEquals(personalDetails.getTown(), personalDetailsDTO.getTown());
-        assertEquals(personalDetails.getCounty(), personalDetailsDTO.getCounty());
-        assertEquals(personalDetails.getCountry(), personalDetailsDTO.getCountry());
-        assertEquals(personalDetails.getPostcode(), personalDetailsDTO.getPostcode());
+        assertEquals(personalDetails.getCustomerRef(), personalDetailsDTO.customerRef());
+        assertEquals(personalDetails.getCustomerName(), personalDetailsDTO.customerName());
+        assertEquals(personalDetails.getAddressLine1(), personalDetailsDTO.addressLine1());
+        assertEquals(personalDetails.getAddressLine2(), personalDetailsDTO.addressLine2());
+        assertEquals(personalDetails.getTown(), personalDetailsDTO.town());
+        assertEquals(personalDetails.getCounty(), personalDetailsDTO.county());
+        assertEquals(personalDetails.getCountry(), personalDetailsDTO.country());
+        assertEquals(personalDetails.getPostcode(), personalDetailsDTO.postcode());
     }
 
 }

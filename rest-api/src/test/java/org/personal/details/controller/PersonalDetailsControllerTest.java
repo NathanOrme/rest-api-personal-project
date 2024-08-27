@@ -36,9 +36,9 @@ class PersonalDetailsControllerTest {
     void getCustomer_WithValidReference_ReturnsDTO() {
         PersonalDetailsDTO personalDetailsDTO = TestUtils.generatePersonDetailsDTO();
 
-        when(personalDetailsService.getCustomerFromRef(personalDetailsDTO.getCustomerRef())).thenReturn(personalDetailsDTO);
+        when(personalDetailsService.getCustomerFromRef(personalDetailsDTO.customerRef())).thenReturn(personalDetailsDTO);
 
-        ResponseEntity<PersonalDetailsDTO> responseEntity = personalDetailsController.getCustomerFromReference(personalDetailsDTO.getCustomerRef());
+        ResponseEntity<PersonalDetailsDTO> responseEntity = personalDetailsController.getCustomerFromReference(personalDetailsDTO.customerRef());
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(personalDetailsDTO, responseEntity.getBody());
