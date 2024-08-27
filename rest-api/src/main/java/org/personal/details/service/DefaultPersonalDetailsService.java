@@ -7,14 +7,14 @@ import org.personal.details.exceptions.CustomerRefExistsException;
 import org.personal.details.mapper.PersonalDetailsMapper;
 import org.personal.details.model.PersonalDetailsDTO;
 import org.personal.details.repository.PersonalDetailsRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 /**
  * Service class responsible for managing personal details operations.
  */
-@Component
+@Service
 @RequiredArgsConstructor
 public class DefaultPersonalDetailsService implements PersonalDetailsService {
 

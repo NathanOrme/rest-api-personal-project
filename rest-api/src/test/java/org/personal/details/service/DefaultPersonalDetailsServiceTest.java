@@ -1,4 +1,4 @@
-package org.personal.details.console.service;
+package org.personal.details.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +11,6 @@ import org.personal.details.exceptions.CustomerRefExistsException;
 import org.personal.details.mapper.PersonalDetailsMapper;
 import org.personal.details.model.PersonalDetailsDTO;
 import org.personal.details.repository.PersonalDetailsRepository;
-import org.personal.details.service.PersonalDetailsService;
 import org.personal.details.utils.TestUtils;
 
 import java.util.Optional;
@@ -31,7 +30,7 @@ class DefaultPersonalDetailsServiceTest {
     private PersonalDetailsMapper personalDetailsMapper;
 
     @InjectMocks
-    private PersonalDetailsService personalDetailsService;
+    private DefaultPersonalDetailsService personalDetailsService;
 
     @Test
     void saveDetails_WithExistingCustomerRef_ThrowsException() {
