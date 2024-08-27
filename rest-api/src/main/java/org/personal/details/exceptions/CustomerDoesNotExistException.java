@@ -14,7 +14,8 @@ public class CustomerDoesNotExistException extends RuntimeException {
     /**
      * Constructs a new {@link CustomerDoesNotExistException} with the specified detail message.
      *
-     * @param message The detail message which is saved for later retrieval by the {@link Throwable#getMessage()} method.
+     * @param message The detail message which is saved for later
+     *                retrieval by the {@link Throwable#getMessage()} method.
      */
     public CustomerDoesNotExistException(final String message) {
         super(message);

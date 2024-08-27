@@ -54,7 +54,9 @@ public class PersonalDetailsService {
         if (personalDetails.isPresent()) {
             return personalDetailsMapper.convertEntityToDTO(personalDetails.get());
         }
-        throw new CustomerDoesNotExistException("There is no matching customer for reference %s".formatted(customerReference));
+        throw new CustomerDoesNotExistException
+                ("There is no matching customer for reference %s"
+                        .formatted(customerReference));
     }
 
     /**
