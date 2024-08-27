@@ -1,7 +1,7 @@
 package org.personal.details.mapper;
 
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.domain.PersonalDetails;
-import org.personal.details.model.PersonalDetailsDTO;
 import org.springframework.stereotype.Component;
 
 /**

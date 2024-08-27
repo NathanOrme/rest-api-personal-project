@@ -2,8 +2,8 @@ package org.personal.details.console.runners;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.console.exception.ConsoleAppException;
-import org.personal.details.console.model.PersonalDetails;
 import org.personal.details.console.service.CsvReaderService;
 import org.personal.details.console.service.RequestService;
 import org.springframework.boot.CommandLineRunner;
@@ -38,12 +38,12 @@ public class CommandRunner implements CommandLineRunner {
     public void run(final String... args) {
         try {
             log.info("Reading src/main/resource/details.csv");
-            List<PersonalDetails> personalDetails = csvReaderService.readContentsOfCSV();
+            List<PersonalDetailsDTO> personalDetailDTOS = csvReaderService.readContentsOfCSV();
             List<String> failedRefs = new ArrayList<>();
             log.info("Contents read, sending request");
-            for (final PersonalDetails personalDetail : personalDetails) {
+            for (final PersonalDetailsDTO personalDetail : personalDetailDTOS) {
                 if (!requestService.sendDetailsToEndpoint(personalDetail)) {
-                    failedRefs.add(personalDetail.getCustomerRef());
+                    failedRefs.add(personalDetail.customerRef());
                 }
             }
             log.info("All entries processed");

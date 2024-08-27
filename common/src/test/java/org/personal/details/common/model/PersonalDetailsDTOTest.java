@@ -1,17 +1,14 @@
-package org.personal.details.model;
+package org.personal.details.common.model;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PersonalDetailsDTOTest {
 
@@ -28,8 +25,8 @@ class PersonalDetailsDTOTest {
     void validation_WithEmptyObject_HasViolations() {
         PersonalDetailsDTO personalDetailsDTO = new PersonalDetailsDTO(null, null, null, null, null, null, null, null);
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
-        assertFalse(violations.isEmpty());
-        assertEquals(5, violations.size());
+        Assertions.assertFalse(violations.isEmpty());
+        Assertions.assertEquals(5, violations.size());
     }
 
     @Test
@@ -44,7 +41,7 @@ class PersonalDetailsDTOTest {
                 null,
                 "TF1 1AA");
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
-        assertTrue(violations.isEmpty());
+        Assertions.assertTrue(violations.isEmpty());
     }
 
     @Test
@@ -60,7 +57,7 @@ class PersonalDetailsDTOTest {
                         "Country",
                         "TF1 1AA");
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
-        assertTrue(violations.isEmpty());
+        Assertions.assertTrue(violations.isEmpty());
     }
 
     @Test
@@ -141,8 +138,8 @@ class PersonalDetailsDTOTest {
 
     private void validatePersonalDetailsDTOHasViolations(final PersonalDetailsDTO personalDetailsDTO) {
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
-        assertFalse(violations.isEmpty());
-        assertEquals(1, violations.size());
+        Assertions.assertFalse(violations.isEmpty());
+        Assertions.assertEquals(1, violations.size());
     }
 
 }

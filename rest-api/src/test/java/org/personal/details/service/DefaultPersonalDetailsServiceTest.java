@@ -1,17 +1,16 @@
-package org.personal.details.console.service;
+package org.personal.details.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.domain.PersonalDetails;
 import org.personal.details.exceptions.CustomerDoesNotExistException;
 import org.personal.details.exceptions.CustomerRefExistsException;
 import org.personal.details.mapper.PersonalDetailsMapper;
-import org.personal.details.model.PersonalDetailsDTO;
 import org.personal.details.repository.PersonalDetailsRepository;
-import org.personal.details.service.PersonalDetailsService;
 import org.personal.details.utils.TestUtils;
 
 import java.util.Optional;
@@ -22,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class PersonalDetailsServiceTest {
+class DefaultPersonalDetailsServiceTest {
 
     @Mock
     private PersonalDetailsRepository personalDetailsRepository;
@@ -31,7 +30,7 @@ class PersonalDetailsServiceTest {
     private PersonalDetailsMapper personalDetailsMapper;
 
     @InjectMocks
-    private PersonalDetailsService personalDetailsService;
+    private DefaultPersonalDetailsService personalDetailsService;
 
     @Test
     void saveDetails_WithExistingCustomerRef_ThrowsException() {

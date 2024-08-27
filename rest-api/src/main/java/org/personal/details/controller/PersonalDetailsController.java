@@ -2,7 +2,7 @@ package org.personal.details.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.personal.details.model.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.service.PersonalDetailsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

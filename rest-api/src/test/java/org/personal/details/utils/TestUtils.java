@@ -1,8 +1,8 @@
 package org.personal.details.utils;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.domain.PersonalDetails;
-import org.personal.details.model.PersonalDetailsDTO;
 
 public class TestUtils {
 
