@@ -15,23 +15,54 @@ import org.springframework.web.client.RestClient;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Service for sending personal details to a remote REST API endpoint.
+ * This service handles HTTP requests to save personal details and manages
+ * responses and errors associated with the request process.
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class RequestService {
 
+    /**
+     * Endpoint URL for saving personal details.
+     */
     private static final String SAVE_DETAILS_ENDPOINT = "/personal-details/save";
 
+    /**
+     * The {@link RestClient} used for making HTTP requests.
+     */
     private final RestClient restClient;
 
+    /**
+     * Checks if the given HTTP status code indicates a successful creation (HTTP 201 Created).
+     *
+     * @param statusCode The HTTP status code to check.
+     * @return {@code true} if the status code indicates successful creation, otherwise {@code false}.
+     */
     protected boolean isCreatedStatus(final HttpStatusCode statusCode) {
         return HttpStatus.CREATED == statusCode;
     }
 
+    /**
+     * Checks if the given HTTP status code indicates an unprocessable entity (HTTP 422 Unprocessable Entity).
+     *
+     * @param statusCode The HTTP status code to check.
+     * @return {@code true} if the status code indicates an unprocessable entity, otherwise {@code false}.
+     */
     protected boolean isUnprocessableEntityStatus(final HttpStatusCode statusCode) {
         return HttpStatus.UNPROCESSABLE_ENTITY == statusCode;
     }
 
+    /**
+     * Sends personal details to the configured REST API endpoint.
+     *
+     * @param personalDetail The {@link PersonalDetails} object to be sent.
+     * @return {@code true} if the request was successful, {@code false} otherwise.
+     * @throws RestAPIDownException    If the REST API endpoint is down.
+     * @throws RequestServiceException If an unexpected error occurs during the request.
+     */
     public boolean sendDetailsToEndpoint(final PersonalDetails personalDetail) {
         log.debug("Initializing Request");
         AtomicBoolean isSuccessfulRequest = new AtomicBoolean(true);
@@ -53,8 +84,14 @@ public class RequestService {
         return isSuccessfulRequest.get();
     }
 
+    /**
+     * Logs a message indicating that the record has been successfully saved to the database.
+     *
+     * @param personalDetail The {@link PersonalDetails} object that was saved.
+     * @param response       The HTTP response received from the server.
+     */
     private void logCreatedMessage(final PersonalDetails personalDetail, final ClientHttpResponse response) {
-        log.info("The record for customer ref {} has successfully been saved to the database", personalDetail.getCustomerRef());
+        log.info("The record for customer ref {} has successfully been saved to the database",
+                personalDetail.getCustomerRef());
     }
-
 }

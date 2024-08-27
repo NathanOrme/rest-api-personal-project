@@ -12,6 +12,11 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CommandLineRunner implementation for executing tasks on application startup.
+ * This runner reads personal details from a CSV file, sends each record to a remote API,
+ * and logs the results.
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -21,6 +26,14 @@ public class CommandRunner implements CommandLineRunner {
 
     private final RequestService requestService;
 
+    /**
+     * Executes the tasks when the application starts.
+     * This method reads personal details from a CSV file, attempts to send each record to a remote API,
+     * and logs the results. Records that fail to be saved are collected and reported.
+     *
+     * @param args Command line arguments (not used in this implementation).
+     * @throws ConsoleAppException If any error occurs during the execution of tasks.
+     */
     @Override
     public void run(final String... args) {
         try {

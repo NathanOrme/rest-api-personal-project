@@ -12,13 +12,35 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Service for reading and parsing CSV files containing personal details.
+ * This service reads a CSV file from the classpath, processes each line,
+ * and converts it into {@link PersonalDetails} objects.
+ */
 @Service
 public class CsvReaderService {
 
+    /**
+     * Delimiter used in the CSV file to separate values.
+     */
     public static final String COMMA_DELIMITER = ",";
+
+    /**
+     * Expected number of columns in the CSV file.
+     */
     public static final int CSV_LENGTH = 8;
+
+    /**
+     * Path to the CSV file relative to the classpath.
+     */
     private static final String CSV_FILENAME = "/details.csv";
 
+    /**
+     * Reads the contents of the CSV file and converts each line to a {@link PersonalDetails} object.
+     *
+     * @return A list of {@link PersonalDetails} objects parsed from the CSV file.
+     * @throws Exception If the CSV file is not found or an error occurs during file processing.
+     */
     public List<PersonalDetails> readContentsOfCSV() throws Exception {
         URL resource = CsvReaderService.class.getResource(CSV_FILENAME);
         if (resource == null) {
@@ -29,14 +51,23 @@ public class CsvReaderService {
             return lines.map(this::convertLineToPersonalDetailsObject)
                     .toList();
         }
-
     }
 
+    /**
+     * Converts a line from the CSV file to a {@link PersonalDetails} object.
+     *
+     * @param line A single line from the CSV file.
+     * @return A {@link PersonalDetails} object representing the data in the line.
+     * @throws CsvParsingException If the line does not have the expected number of columns.
+     */
     private PersonalDetails convertLineToPersonalDetailsObject(final String line) {
         String[] contents = line.split(COMMA_DELIMITER);
         if (contents.length == CSV_LENGTH) {
-            return new PersonalDetails(contents[0], contents[1], contents[2], contents[3], contents[4], contents[5], contents[6], contents[7]);
+            return new PersonalDetails(contents[0], contents[1], contents[2],
+                    contents[3], contents[4], contents[5], contents[6], contents[7]);
         }
-        throw new CsvParsingException("Unexpected error occurred parsing CSV - Content length of string does not equal %s".formatted(CSV_LENGTH));
+        throw new CsvParsingException(
+                "Unexpected error occurred parsing CSV - Content length of string does not equal %s"
+                        .formatted(CSV_LENGTH));
     }
 }
