@@ -36,13 +36,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SuppressWarnings("unused")
 class PersonalDetailsApplicationIT {
 
-    public static final PersonalDetailsDTO MINIMUM_DTO = PersonalDetailsDTO.builder()
-            .customerRef(RandomStringUtils.randomAlphabetic(20))
-            .customerName("Doe John")
-            .addressLine1("AL1")
-            .town("Town")
-            .postcode("BF1 BF2")
-            .build();
+    public static final PersonalDetailsDTO MINIMUM_DTO = new PersonalDetailsDTO(
+            RandomStringUtils.randomAlphabetic(20), "Doe John",
+            "AL1", null, "Town",
+            null, null, "BF1 BF2");
 
     public static final PersonalDetailsDTO MAXIMUM_DTO = TestUtils.generatePersonDetailsDTO();
 
@@ -91,27 +88,27 @@ class PersonalDetailsApplicationIT {
     @Test
     void getCustomer_WithExistingCustomerInDatabase_ReturnsOk() throws Exception {
         sendSaveDetailsRequest(MINIMUM_DTO);
-        MvcResult result = sendGetRequest(MINIMUM_DTO.getCustomerRef())
+        MvcResult result = sendGetRequest(MINIMUM_DTO.customerRef())
                 .andExpect(status().isOk())
                 .andReturn();
         String body = result.getResponse().getContentAsString();
         assertNotNull(body);
 
         PersonalDetailsDTO actualDTO = new ObjectMapper().readValue(body, PersonalDetailsDTO.class);
-        assertEquals(MINIMUM_DTO.getCustomerRef(), actualDTO.getCustomerRef());
-        assertEquals(MINIMUM_DTO.getCustomerName(), actualDTO.getCustomerName());
-        assertEquals(MINIMUM_DTO.getAddressLine1(), actualDTO.getAddressLine1());
-        assertEquals(MINIMUM_DTO.getAddressLine2(), actualDTO.getAddressLine2());
-        assertEquals(MINIMUM_DTO.getTown(), actualDTO.getTown());
-        assertEquals(MINIMUM_DTO.getCounty(), actualDTO.getCounty());
-        assertEquals(MINIMUM_DTO.getCountry(), actualDTO.getCountry());
-        assertEquals(MINIMUM_DTO.getPostcode(), actualDTO.getPostcode());
+        assertEquals(MINIMUM_DTO.customerRef(), actualDTO.customerRef());
+        assertEquals(MINIMUM_DTO.customerName(), actualDTO.customerName());
+        assertEquals(MINIMUM_DTO.addressLine1(), actualDTO.addressLine1());
+        assertEquals(MINIMUM_DTO.addressLine2(), actualDTO.addressLine2());
+        assertEquals(MINIMUM_DTO.town(), actualDTO.town());
+        assertEquals(MINIMUM_DTO.county(), actualDTO.county());
+        assertEquals(MINIMUM_DTO.country(), actualDTO.country());
+        assertEquals(MINIMUM_DTO.postcode(), actualDTO.postcode());
 
     }
 
     @Test
     void getCustomer_WithNonExistingCustomerInDatabase_ReturnsOk() throws Exception {
-        MvcResult result = sendGetRequest(MINIMUM_DTO.getCustomerRef())
+        MvcResult result = sendGetRequest(MINIMUM_DTO.customerRef())
                 .andExpect(status().isNotFound())
                 .andReturn();
 

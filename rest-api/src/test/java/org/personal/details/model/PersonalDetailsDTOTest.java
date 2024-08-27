@@ -26,8 +26,7 @@ class PersonalDetailsDTOTest {
 
     @Test
     void validation_WithEmptyObject_HasViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .build();
+        PersonalDetailsDTO personalDetailsDTO = new PersonalDetailsDTO(null, null, null, null, null, null, null, null);
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
         assertFalse(violations.isEmpty());
         assertEquals(5, violations.size());
@@ -35,90 +34,107 @@ class PersonalDetailsDTOTest {
 
     @Test
     void validation_WithMinimumObjects_DoesNotHaveViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef("Customer_Ref")
-                .customerName("Namey McNameFace")
-                .addressLine1("AL1")
-                .town("Town")
-                .postcode("TF1 1AA")
-                .build();
+        PersonalDetailsDTO personalDetailsDTO = new PersonalDetailsDTO(
+                "Customer_Ref",
+                "Namey McNameFace",
+                "AL1",
+                null,
+                "Town",
+                null,
+                null,
+                "TF1 1AA");
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
         assertTrue(violations.isEmpty());
     }
 
     @Test
     void validation_WithMaximumObjects_DoesNotHaveViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef("Customer_Ref")
-                .customerName("Namey McNameFace")
-                .addressLine1("AL1")
-                .addressLine2("AL2")
-                .town("Town")
-                .county("County")
-                .country("Country")
-                .postcode("TF1 1AA")
-                .build();
+        PersonalDetailsDTO personalDetailsDTO =
+                new PersonalDetailsDTO(
+                        "Customer_Ref",
+                        "Namey McNameFace",
+                        "AL1",
+                        "AL2",
+                        "Town",
+                        "County",
+                        "Country",
+                        "TF1 1AA");
         Set<ConstraintViolation<PersonalDetailsDTO>> violations = validator.validate(personalDetailsDTO);
         assertTrue(violations.isEmpty());
     }
 
     @Test
     void validation_WithMissingRef_HasViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef(null)
-                .customerName("Namey McNameFace")
-                .addressLine1("AL1")
-                .town("Town")
-                .postcode("TF1 1AA")
-                .build();
+        PersonalDetailsDTO personalDetailsDTO =
+                new PersonalDetailsDTO(
+                        null,
+                        "Namey McNameFace",
+                        "AL1",
+                        "AL2",
+                        "Town",
+                        "County",
+                        "Country",
+                        "TF1 1AA");
         validatePersonalDetailsDTOHasViolations(personalDetailsDTO);
     }
 
     @Test
     void validation_WithMissingName_HasViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef("Ref")
-                .customerName(null)
-                .addressLine1("AL1")
-                .town("Town")
-                .postcode("TF1 1AA")
-                .build();
+        PersonalDetailsDTO personalDetailsDTO =
+                new PersonalDetailsDTO(
+                        "Customer_Ref",
+                        null,
+                        "AL1",
+                        "AL2",
+                        "Town",
+                        "County",
+                        "Country",
+                        "TF1 1AA");
         validatePersonalDetailsDTOHasViolations(personalDetailsDTO);
     }
 
     @Test
     void validation_WithMissingAddressLine1_HasViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef("Ref")
-                .customerName("Name")
-                .addressLine1(null)
-                .town("Town")
-                .postcode("TF1 1AA")
-                .build();
+        PersonalDetailsDTO personalDetailsDTO =
+                new PersonalDetailsDTO(
+                        "Customer_Ref",
+                        "Namey McNameFace",
+                        null,
+                        "AL2",
+                        "Town",
+                        "County",
+                        "Country",
+                        "TF1 1AA");
         validatePersonalDetailsDTOHasViolations(personalDetailsDTO);
     }
 
     @Test
     void validation_WithMissingTown_HasViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef("Ref")
-                .customerName("Name")
-                .addressLine1("AL1")
-                .town(null)
-                .postcode("TF1 1AA")
-                .build();
+        PersonalDetailsDTO personalDetailsDTO =
+                new PersonalDetailsDTO(
+                        "Customer_Ref",
+                        "Namey McNameFace",
+                        "AL1",
+                        "AL2",
+                        null,
+                        "County",
+                        "Country",
+                        "TF1 1AA");
         validatePersonalDetailsDTOHasViolations(personalDetailsDTO);
     }
 
     @Test
     void validation_WithMissingPostCode_HasViolations() {
-        PersonalDetailsDTO personalDetailsDTO = PersonalDetailsDTO.builder()
-                .customerRef("Ref")
-                .customerName("Name")
-                .addressLine1("AddressLine1")
-                .town("Town")
-                .postcode(null)
-                .build();
+        PersonalDetailsDTO personalDetailsDTO =
+                new PersonalDetailsDTO(
+                        "Customer_Ref",
+                        "Namey McNameFace",
+                        "AL1",
+                        "AL2",
+                        "Town",
+                        "County",
+                        "Country",
+                        null);
         validatePersonalDetailsDTOHasViolations(personalDetailsDTO);
     }
 

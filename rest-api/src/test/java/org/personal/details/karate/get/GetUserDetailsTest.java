@@ -11,7 +11,7 @@ class GetUserDetailsTest {
     private int port;
 
     @Karate.Test
-    Karate testPostIssue() {
+    Karate testGetIssue() {
         return Karate.run("getUserDetails")
                 .relativeTo(getClass())
                 .systemProperty("karate.server.port", port + "");
