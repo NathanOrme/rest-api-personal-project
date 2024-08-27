@@ -1,11 +1,11 @@
 package org.personal.details.service;
 
 import lombok.RequiredArgsConstructor;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.domain.PersonalDetails;
 import org.personal.details.exceptions.CustomerDoesNotExistException;
 import org.personal.details.exceptions.CustomerRefExistsException;
 import org.personal.details.mapper.PersonalDetailsMapper;
-import org.personal.details.model.PersonalDetailsDTO;
 import org.personal.details.repository.PersonalDetailsRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package org.personal.details.service;
 
-import org.personal.details.model.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 
 /**
  * Interface for managing personal details.

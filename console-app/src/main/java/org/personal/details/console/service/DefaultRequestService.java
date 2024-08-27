@@ -2,7 +2,7 @@ package org.personal.details.console.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.personal.details.console.domain.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.console.exception.RequestServiceException;
 import org.personal.details.console.exception.RestAPIDownException;
 import org.springframework.http.HttpStatus;

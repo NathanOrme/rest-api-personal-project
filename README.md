@@ -19,6 +19,7 @@ an endpoint to then store them in a database.
 
 This private project consists of the following project(s):
 
+- [Personal Details Common](common/README.md)
 - [Personal Details Console App](console-app/README.md)
 - [Personal Details Rest API](rest-api/README.md)
 

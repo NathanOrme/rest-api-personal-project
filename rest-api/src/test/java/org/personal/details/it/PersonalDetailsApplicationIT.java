@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.personal.details.model.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.repository.PersonalDetailsRepository;
 import org.personal.details.service.PersonalDetailsService;
 import org.personal.details.utils.TestUtils;

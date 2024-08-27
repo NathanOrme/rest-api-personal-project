@@ -1,6 +1,6 @@
 package org.personal.details.console.service;
 
-import org.personal.details.console.domain.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.console.exception.CsvParsingException;
 import org.springframework.stereotype.Service;
 

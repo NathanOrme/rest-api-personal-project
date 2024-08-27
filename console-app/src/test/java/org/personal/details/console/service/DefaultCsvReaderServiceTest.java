@@ -1,7 +1,7 @@
 package org.personal.details.console.service;
 
 import org.junit.jupiter.api.Test;
-import org.personal.details.console.domain.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 
 import java.util.List;
 

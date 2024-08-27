@@ -2,7 +2,7 @@ package org.personal.details.console.runners;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.personal.details.console.domain.PersonalDetailsDTO;
+import org.personal.details.common.model.PersonalDetailsDTO;
 import org.personal.details.console.exception.ConsoleAppException;
 import org.personal.details.console.service.CsvReaderService;
 import org.personal.details.console.service.RequestService;
