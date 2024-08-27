@@ -80,7 +80,8 @@ public class EncryptionUtils {
      * @throws NoSuchPaddingException   If the padding scheme is not available.
      * @throws InvalidKeyException      If the secret key is invalid.
      */
-    private Cipher getCipher(final int cipherMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
+    private Cipher getCipher(final int cipherMode)
+            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
         Cipher cipher = Cipher.getInstance(AES);
         cipher.init(cipherMode, getKey());
         return cipher;

@@ -26,7 +26,8 @@ public class PersonalDetailsControllerAdvice {
      * @param errorMessage The error message to be included in the response body.
      * @return ResponseEntity containing the error message and HTTP status.
      */
-    private static ResponseEntity<ErrorMessageDTO> generateErrorMessage(final HttpStatus httpStatus, final String errorMessage) {
+    private static ResponseEntity<ErrorMessageDTO> generateErrorMessage
+    (final HttpStatus httpStatus, final String errorMessage) {
         log.error(errorMessage);
         ErrorMessageDTO errorMessageDTO = new ErrorMessageDTO(errorMessage);
         return ResponseEntity.status(httpStatus).body(errorMessageDTO);
@@ -39,7 +40,8 @@ public class PersonalDetailsControllerAdvice {
      * @return ResponseEntity containing the error message and a 422 Unprocessable Entity status.
      */
     @ExceptionHandler(value = {CustomerRefExistsException.class})
-    protected ResponseEntity<ErrorMessageDTO> handleCustomerExistsException(final CustomerRefExistsException exception) {
+    protected ResponseEntity<ErrorMessageDTO> handleCustomerExistsException
+    (final CustomerRefExistsException exception) {
         return generateErrorMessage(HttpStatus.UNPROCESSABLE_ENTITY, exception.getMessage());
     }
 
@@ -50,7 +52,8 @@ public class PersonalDetailsControllerAdvice {
      * @return ResponseEntity containing the error message and a 404 Not Found status.
      */
     @ExceptionHandler(value = {CustomerDoesNotExistException.class})
-    protected ResponseEntity<ErrorMessageDTO> handleCustomerDoesNotExistException(final CustomerDoesNotExistException exception) {
+    protected ResponseEntity<ErrorMessageDTO> handleCustomerDoesNotExistException
+    (final CustomerDoesNotExistException exception) {
         return generateErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
     }
 

@@ -36,7 +36,8 @@ public class PersonalDetailsController {
      * @return ResponseEntity with a 201 Created status if the details are saved successfully.
      */
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/save",
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> savePersonalDetails(@RequestBody final PersonalDetailsDTO personalDetailsDTO) {
         log.info("Received request for customer ref {}", personalDetailsDTO.customerRef());
         personalDetailsService.saveDetails(personalDetailsDTO);

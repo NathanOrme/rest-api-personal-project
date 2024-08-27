@@ -5,8 +5,10 @@ import org.personal.details.model.PersonalDetailsDTO;
 import org.springframework.stereotype.Component;
 
 /**
- * Mapper class for converting between {@link PersonalDetails} entities and {@link PersonalDetailsDTO} data transfer objects.
- * This class handles the mapping logic to convert data between different layers of the application.
+ * Mapper class for converting between {@link PersonalDetails} entities
+ * and {@link PersonalDetailsDTO} data transfer objects.
+ * This class handles the mapping logic to convert
+ * data between different layers of the application.
  */
 @Component
 public class PersonalDetailsMapper {
